@@ -37,7 +37,7 @@ public class FlareGun : MonoBehaviour
         }
         else
         {
-           /* if (_player.GetButtonDown("FireWeapon"))
+            if (Input.GetMouseButtonDown(0))
             {
                 _readyToShoot = false;
                 _counterUntilNextShoot = ShootInterval;
@@ -46,10 +46,9 @@ public class FlareGun : MonoBehaviour
                 GameObject bulletSpawn = Instantiate(PrefabFlareGunBullet) as GameObject;
                 bulletSpawn.transform.position = SpawnPoint.transform.position;
                 bulletSpawn.transform.right = SpawnPoint.transform.right * -1;
-                Destroy(bulletSpawn, 2.5f);
 
             }
-           */
+           
         }
         
     }
