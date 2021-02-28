@@ -145,7 +145,7 @@ using System.Collections;
 
 		public float GetSpeed()
 		{
-			return 2;
+			return _rb.velocity.magnitude;
 		}
 
 
