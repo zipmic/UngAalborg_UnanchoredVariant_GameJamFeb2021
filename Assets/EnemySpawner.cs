@@ -28,4 +28,18 @@ public class EnemySpawner : MonoBehaviour
             _counter = SpawnInterval;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Bullet")
+        {
+            if(!collision.gameObject.GetComponent<BulletProperties>()._bigBullet)
+            {
+                GameObject tmp = Instantiate(EnemyToSpawn) as GameObject;
+                tmp.transform.position = transform.position;
+                GameObject tmp2 = Instantiate(EnemyToSpawn) as GameObject;
+                tmp2.transform.position = transform.position;
+            }
+        }
+    }
 }

@@ -11,6 +11,8 @@ using System.Collections;
 		// The movement speed of this character
 		public float moveSpeed = 100.0f;
 
+	public ChargeBar _chargeBar;
+
 		// The bullet speed
 		public float bulletSpeed = 15.0f;
 
@@ -149,9 +151,16 @@ using System.Collections;
 		}
 
 
-	}
 
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "PowerBall")
+        {
+			Destroy(collision.gameObject);
+			_chargeBar.ChangeCharge(Random.Range(1f,30f));
+        }
+    }
 
 
-
+}

@@ -8,6 +8,8 @@ public class BulletProperties : MonoBehaviour
     private Rigidbody2D _rb;
     public float Speed = 800;
 
+    public bool _bigBullet = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +21,12 @@ public class BulletProperties : MonoBehaviour
     void Update()
     {
         _rb.velocity = transform.right * Speed * Time.deltaTime;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       
+
+        Destroy(gameObject);
     }
 }
