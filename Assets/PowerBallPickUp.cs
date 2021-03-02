@@ -18,5 +18,10 @@ public class PowerBallPickUp : MonoBehaviour
         
     }
 
-   
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+	
+	}
+
+
 }

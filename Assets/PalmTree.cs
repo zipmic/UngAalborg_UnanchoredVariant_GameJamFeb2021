@@ -7,11 +7,12 @@ public class PalmTree : MonoBehaviour
 
     public int Health = 5;
     public GameObject TreeDropPrefab;
+    private AudioPlayer audioPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioPlayer = GameObject.Find("AudioPlayer").GetComponent<AudioPlayer>();
     }
 
     // Update is called once per frame
@@ -25,7 +26,7 @@ public class PalmTree : MonoBehaviour
         if(collision.gameObject.tag == "Bullet")
         {
             Health--;
-         
+            audioPlayer.PlayTreeHit();
             if (Health <= 0)
             {
                 SpawnPointsAndDestroyTree();

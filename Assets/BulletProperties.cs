@@ -25,8 +25,10 @@ public class BulletProperties : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       
 
-        Destroy(gameObject);
+        if (!_bigBullet)
+        {
+            Destroy(gameObject);
+        }
     }
 }

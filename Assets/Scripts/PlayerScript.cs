@@ -11,6 +11,8 @@ using System.Collections;
 		// The movement speed of this character
 		public float moveSpeed = 100.0f;
 
+	public GameObject ExplosionPrefab;
+
 	public ChargeBar _chargeBar;
 
 		// The bullet speed
@@ -32,7 +34,9 @@ using System.Collections;
 		private bool _jump;
 		private SpriteRenderer _playerSprite;
 
+	private AudioPlayer audioplayer;
 
+	
 
 		void Awake()
 		{
@@ -62,7 +66,8 @@ using System.Collections;
 		private void Start()
 		{
 			Cursor.visible = false;
-		}
+		audioplayer = GameObject.Find("AudioPlayer").GetComponent<AudioPlayer>();
+	}
 
 		void Update()
 		{
@@ -158,9 +163,21 @@ using System.Collections;
         if(collision.tag == "PowerBall")
         {
 			Destroy(collision.gameObject);
+			audioplayer.PlayPickup();
 			_chargeBar.ChangeCharge(Random.Range(1f,30f));
         }
     }
+
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (collision.gameObject.tag == "Enemy")
+		{
+			GameObject tmp = Instantiate(ExplosionPrefab) as GameObject;
+			tmp.transform.position = transform.position;
+			audioplayer.PlayPlayerDeath();
+			Destroy(gameObject);
+		}
+	}
 
 
 }
